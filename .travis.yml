@@ -14,11 +14,8 @@ after_success:
   - docker build -t xavophonic/multi-nginx ./nginx
   - docker build -t xavophonic/multi-server ./server
   - docker build -t xavophonic/multi-worker ./worker
-
-# Log in to the docker CLI
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
-# Take those images and push themn to Docker Hub
-docker push xavophonic/multi-client
-docker push xavophonic/multi-nginx
-docker push xavophonic/multi-server
-docker push xavophonic/multi-worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push xavophonic/multi-client
+  - docker push xavophonic/multi-nginx
+  - docker push xavophonic/multi-server
+  - docker push xavophonic/multi-worker
